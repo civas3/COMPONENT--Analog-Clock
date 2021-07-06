@@ -1,0 +1,151 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 10px;
+  //10 px = 1rem
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+body{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.clock{
+  width: 30rem;
+  height: 30rem;
+  border-radius: 100rem;
+  border: #f3a9a5 solid 1.3rem;
+  background: rgba(226,226,226,1);
+  background: radial-gradient(ellipse at center, rgba(226,226,226,1) 0%, rgba(226,226,226,1) 8%, rgba(219,219,219,1) 10%, rgba(209,209,209,1) 48%, rgba(254,254,254,1) 79%, rgba(254,254,254,1) 100%);
+  position: relative;
+  // black cicrle in the middle of the clock
+  &::after{
+    content: '';
+    position: absolute;
+    background-color: black;
+    z-index: 11;
+    width: 1.5rem;
+    height: 1.5rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 100%;
+  }
+  //clock numbers
+  &-number{
+    --rotation: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    // background-color: rgba(255, 0, 0, 0.336);
+    text-align: center;
+    font-size: 3rem;
+    transform: rotate(var(--rotation));
+    // background-color: rgba(255, 0, 0, 0.336);
+    // red dots below the numbers
+    &::after{
+      content: '';
+      position: absolute;
+      width: 0.5rem;
+      height: 0.5rem;
+      top: 20.5%;
+      left: 50%;
+      background-color: red;
+      border-radius: 100%;
+      transform: translate(-50%, -12%);
+    }
+
+  }
+  //clock hands / arrows 
+  &-hand{
+    --rotation: 0;
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: black;
+    // tells where i want tranform to be applied on
+    transform-origin: bottom;
+    // converting value to the deg
+    border: solid rgba(248, 19, 19, 0.527) 0.1rem;
+    transform: translateX(-50%) rotate(calc(var(--rotation) * 1deg));
+    // arrow tips
+    &::after{
+      content: '';
+      position: absolute;
+    }
+  }
+  //clock hour arrow 
+  .hour{
+    width: 1rem;
+    height: 28%;
+    // arrow tip properties
+    &::after{
+      left: -0.1rem;
+      top: -1rem;
+      width: 0;
+      height: 0;
+      border-left: 0.5rem solid transparent;
+      border-right: 0.5rem solid transparent;
+      border-bottom: 1rem solid black;
+      clear: both;
+    }
+  }
+  //clock minute arrow 
+  .minute{
+    width: 0.6rem;
+    height: 32%;
+    // arrow tip properties
+    &::after{
+      left: -0.1rem;
+      top: -1rem;
+      width: 0;
+      height: 0;
+      border-left: 0.3rem solid transparent;
+      border-right: 0.3rem solid transparent;
+      border-bottom: 1rem solid black;
+      clear: both;
+    }
+  }
+  //clock second arrow 
+  .second{
+    width: 0.2rem;
+    height: 35%;
+    background-color: red;
+    // arrow tip properties
+    &::after{
+      left: -0.1rem;
+      top: -1rem;
+      width: 0;
+      height: 0;
+      border-left: 0.1rem solid transparent;
+      border-right: 0.1rem solid transparent;
+      border-bottom: 1rem solid red;
+      clear: both;
+    }
+  }
+
+  .number1 { --rotation: 30deg;}
+  .number2 { --rotation: 60deg;}
+  .number3 { --rotation: 90deg;}
+  .number4 { --rotation: 120deg;}
+  .number5 { --rotation: 150deg;}
+  .number6 { --rotation: 180deg;}
+  .number7 { --rotation: 210deg;}
+  .number8 { --rotation: 240deg;}
+  .number9 { --rotation: 270deg;}
+  .number10 { --rotation: 300deg;}
+  .number11 { --rotation: 330deg;}
+
+}
+
+
+
+
